@@ -1,0 +1,25 @@
+.Dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    line-height: 1.8;
+}
+
+.DialogsItems {
+    padding: 10px;
+}
+
+.DialogsItems .active {
+    color: gold;
+}
+
+.Dialog {
+
+}
+
+.Messages {
+    padding: 10px;
+}
+
+.Message {
+
+}
