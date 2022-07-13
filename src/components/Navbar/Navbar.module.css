@@ -4,14 +4,37 @@
 
     padding: 10px;
     line-height: 1.8;
+
+
 }
 
 .item a {
     color: #1c7364;
     text-decoration: none;
 
+
 }
 
 .item a.activeLink {
-    color: rgb(194, 41, 41);
+    color: #ae71f6;
+    cursor: pointer;
+}
+
+.sideBar {
+    padding-top: 100px;
+    font-size: 30px;
+
+}
+
+.friendsTitle {
+    font-size: 24px;
+    padding-top: 20px;
+    color: #1c7364;
+
+}
+
+.friendsTitle__Elements {
+    display: flex;
+   justify-content: center;
+
 }

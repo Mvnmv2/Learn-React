@@ -2,8 +2,13 @@ import React from 'react';
 import s from './Navbar.module.css';
 import Dialogs from "../Dialogs/Dialogs";
 import {NavLink} from "react-router-dom";
+import Friend from "./Friends/Friend";
 
-const Navbar = () => {
+
+const Navbar = (props) => {
+
+    let friendsElements = props.state.friendsData.map(f => <Friend name={f.name} src={f.src}/>)
+
     return (
         <nav className={s.nav}>
             <div className={s.item}>
@@ -23,7 +28,18 @@ const Navbar = () => {
                 <NavLink to="/Settings"
                          className={navData => navData.isActive ? s.activeLink : s.item}>Settings</NavLink>
             </div>
+
+            <div className={s.friendsTitle}>
+                Friends:
+            </div>
+
+            <div className={s.friendsTitle__Elements}>
+                {friendsElements}
+            </div>
+
+
         </nav>
+
     );
 }
 

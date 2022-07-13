@@ -1,0 +1,25 @@
+.item {
+    color: white;
+    display: flex;
+    align-items: center;
+    width: 400px;
+}
+
+.item img {
+    width: 50px;
+    border-radius: 50%;
+
+}
+
+.messageItem {
+    margin-left: 10px;
+}
+
+.likes {
+    margin-left: 20px;
+    color: #ae71f6;
+}
+
+.Icon {
+
+}

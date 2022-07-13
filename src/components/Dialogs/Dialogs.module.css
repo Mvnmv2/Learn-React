@@ -1,25 +1,31 @@
 .Dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
-    line-height: 1.8;
+    grid-template-columns: 1fr 1fr 1fr;
+    line-height: 2.8;
 }
 
 .DialogsItems {
     padding: 10px;
+    margin-bottom: 20px;
 }
 
-.DialogsItems .active {
-    color: gold;
+.DialogsItems .active a{
+    color: 	#2F4F4F;
+    text-decoration: none;
 }
 
 .Dialog {
+    display: flex;
 
-}
-
-.Messages {
-    padding: 10px;
 }
 
 .Message {
+    color: 	#333;
+    font-style: italic;
+}
 
+.Icon {
+    padding-right: 10px;
+    color: 	#FFEFD5;
+    font-size: 40px;
 }
