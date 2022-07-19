@@ -9,3 +9,8 @@
     padding: 10px;
 }
 
+textarea:focus {
+    outline: none;
+}
+
+

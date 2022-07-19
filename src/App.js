@@ -12,6 +12,7 @@ import ReactDOM from 'react-dom'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {faTwitter, faFontAwesome} from '@fortawesome/free-brands-svg-icons'
+import {addDialog} from "./redax/state";
 
 library.add(fas, faTwitter, faFontAwesome)
 
@@ -31,11 +32,15 @@ const App = (props) => {
                                                                    updateNewPostText={props.updateNewPostText}
                         />}/>
                         <Route path='/dialogs/*'
-                               element={<Dialogs state={props.state.dialogsPage}/>}/>
+                               element={<Dialogs dialogsPage={props.state.dialogsPage}
+                                                 addDialog={props.addDialog}
+                                                 updateNewDialogText={props.updateNewDialogText}
+
+                               />}/>
                         <Route path='/News' element={<News/>}/>
                         <Route path='/Music' element={<Music/>}/>
                         <Route path='/Settings' element={<Settings/>}/>
-                        {/*<Route path='/Friends/*' element={<Friends state={props.state.friendsData} />}/>*/}
+
 
                     </Routes>
                 </div>

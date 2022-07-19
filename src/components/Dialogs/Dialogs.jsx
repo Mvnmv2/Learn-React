@@ -5,15 +5,21 @@ import Message from "./Message/Message"
 
 const Dialogs = (props) => {
 
-    let DialogElements = props.state.dialogsData.map(d => <DialogItem name={d.name} id={d.id}/>);
+    let DialogElements = props.dialogsPage.dialogsData.map(d => <DialogItem name={d.name} id={d.id}/>);
 
-    let messagesElements = props.state.messagesData.map(m => <Message massage={m.message}/>)
+    let messagesElements = props.dialogsPage.messagesData.map(m => <Message massage={m.message} />)
 
     let newDialog = React.createRef();
 
     let addDialog = () => {
+
+        props.addDialog();
+
+    }
+
+    let onDialogChange = () => {
         let text = newDialog.current.value;
-        alert(text);
+        props.updateNewDialogText(text);
     }
 
 
@@ -21,7 +27,8 @@ const Dialogs = (props) => {
         <div className={s.Dialogs}>
             <div className={s.DialogsItems}>
                 {DialogElements}
-                <textarea ref={newDialog} cols="30" rows="3"></textarea>
+                <textarea onChange={onDialogChange}  ref={newDialog} cols="30" rows="3"
+                value={props.dialogsPage.newDialogMessage}/>
                 <div>
                     <button onClick={addDialog}>Add text</button>
                 </div>
@@ -30,10 +37,10 @@ const Dialogs = (props) => {
             <div className={s.Message}>
                 {messagesElements}
             </div>
-            <div className={s.Message}>
+            {/*<div className={s.Message}>
                 {messagesElements}
 
-            </div>
+            </div>*/}
 
 
         </div>
