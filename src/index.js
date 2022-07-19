@@ -1,16 +1,32 @@
 import React from 'react';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {rerenderEntireTree} from './render'
-import state from "./redax/state";
+import state, {addDialog, addPost, subscribe, updateNewDialogText, updateNewPostText} from "./redax/state";
+import App from './App';
 
 
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+let rerenderEntireTree = () => {
+
+    root.render(
+        <React.StrictMode>
+            <App state={state}
+                 addPost={addPost}
+                 updateNewPostText={updateNewPostText}
+                 addDialog={addDialog}
+                 updateNewDialogText={updateNewDialogText}
+            />
+        </React.StrictMode>
+    );
+
+
+}
 rerenderEntireTree(state);
 
-
-
-
-
+subscribe(rerenderEntireTree);
 
 
 
