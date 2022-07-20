@@ -2,31 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import state, {addDialog, addPost, subscribe, updateNewDialogText, updateNewPostText} from "./redax/state";
+import store from "./redax/state";
 import App from './App';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let rerenderEntireTree = () => {
+let rerenderEntireTree = (state) => {
 
     root.render(
         <React.StrictMode>
             <App state={state}
-                 addPost={addPost}
-                 updateNewPostText={updateNewPostText}
-                 addDialog={addDialog}
-                 updateNewDialogText={updateNewDialogText}
+                 addPost={store.addPost.bind(store)}
+                 updateNewPostText={store.updateNewPostText.bind(store)}
+                 addDialog={store.addDialog.bind(store)}
+                 updateNewDialogText={store.updateNewDialogText.bind(store)}
             />
         </React.StrictMode>
     );
 
 
 }
-rerenderEntireTree(state);
+rerenderEntireTree(store.getState());
 
-subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);
 
 
 
