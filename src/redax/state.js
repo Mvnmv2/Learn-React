@@ -37,15 +37,19 @@ let store = {
         }
 
     },
-    getState() {
-        return this._state;
-    },
+
     _callSubscriber() {
         console.log('Hi');
     },
 
-    /*Function for Profile*/
+    getState() {
+        return this._state;
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
 
+    /*Function for Profile*/
     addPost() {
         let newPost = {
             post: this._state.profilePage.newPostText,
@@ -63,10 +67,9 @@ let store = {
     },
 
     /*Function for Dialogs*/
-
     addDialog() {
         let newMessage = {
-            message:  this._state.dialogsPage.newDialogMessage,
+            message: this._state.dialogsPage.newDialogMessage,
             id: 7
         };
 
@@ -80,9 +83,24 @@ let store = {
         this._callSubscriber(this._state);
     },
 
-    subscribe(observer) {
-        this._callSubscriber = observer;
-    },
+    dispatch(action) {
+        /*Function for Profile*/
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                post: this._state.profilePage.newPostText,
+                id: 5,
+                likeCounts: 0
+            };
+            this._state.profilePage.postsData.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
+    }
+
 
 }
 
