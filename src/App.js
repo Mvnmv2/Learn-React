@@ -33,8 +33,8 @@ const App = (props) => {
                         />}/>
                         <Route path='/dialogs/*'
                                element={<Dialogs dialogsPage={props.state.dialogsPage}
-                                                 addDialog={props.addDialog}
-                                                 updateNewDialogText={props.updateNewDialogText}
+                                                 dispatch={props.dispatch}
+
                          />}/>
 
                         <Route path='/News' element={<News/>}/>

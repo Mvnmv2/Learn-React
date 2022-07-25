@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_DIALOG = 'ADD-DIALOG';
+const UPDATE_NEW_DIALOG_TEXT = 'UPDATE-NEW-DIALOG-TEXT';
+
 let store = {
     _state: {
         profilePage: {
@@ -49,23 +54,6 @@ let store = {
         this._callSubscriber = observer;
     },
 
-    /*Function for Profile*/
-    addPost() {
-        let newPost = {
-            post: this._state.profilePage.newPostText,
-            id: 5,
-            likeCounts: 0
-        };
-
-        this._state.profilePage.postsData.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-
     /*Function for Dialogs*/
     addDialog() {
         let newMessage = {
@@ -85,7 +73,7 @@ let store = {
 
     dispatch(action) {
         /*Function for Profile*/
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost = {
                 post: this._state.profilePage.newPostText,
                 id: 5,
@@ -95,14 +83,51 @@ let store = {
             this._state.profilePage.newPostText = '';
             this._callSubscriber(this._state);
 
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+
+            /*Function for Dialogs*/
+        } else if (action.type === ADD_DIALOG) {
+            let newMessage = {
+                message: this._state.dialogsPage.newDialogMessage,
+                id: 7
+            };
+            this._state.dialogsPage.messagesData.push(newMessage);
+            this._state.dialogsPage.newDialogMessage = '';
+            this._callSubscriber(this._state);
+
+        } else if (action.type === UPDATE_NEW_DIALOG_TEXT) {
+            this._state.dialogsPage.newDialogMessage = action.newText;
             this._callSubscriber(this._state);
         }
     }
 
 
 }
+
+export const addPostActionCreator = () => {
+    return {
+        type: ADD_POST,
+    }
+}
+
+export const updateNewPostTextActionCreator = (text) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        newText: text,
+    }
+}
+
+export const addDialogActionCreator = () => ({ type: ADD_DIALOG })
+
+
+
+export const updateNewDialogTextActionCreator = (text) => ({
+        type: UPDATE_NEW_DIALOG_TEXT,
+        newText: text,
+    })
+
 
 
 export default store;

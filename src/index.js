@@ -15,9 +15,6 @@ let rerenderEntireTree = (state) => {
         <React.StrictMode>
             <App state={state}
                  dispatch={store.dispatch.bind(store)}
-
-                 addDialog={store.addDialog.bind(store)}
-                 updateNewDialogText={store.updateNewDialogText.bind(store)}
             />
         </React.StrictMode>
     );
