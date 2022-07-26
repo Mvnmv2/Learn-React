@@ -3,9 +3,6 @@ import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redax/state";
 
-
-
-
 const MyPosts = (props) => {
 
     let postElement = props.postsData.map(p => <Post massage={p.post} likeCounts={p.likeCounts}/>)

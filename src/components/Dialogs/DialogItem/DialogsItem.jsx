@@ -8,12 +8,12 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 const DialogItem = (props) => {
     let path = "/Dialogs/" + props.id;
     return (
-        <div className={s.Dialog + ' ' + s.active}>
+        <div className={s.Dialog}>
 
                <FontAwesomeIcon className={s.Icon} icon="fa-solid fa-circle-user" />
 
-            <div className={s.Messages}>
-                <NavLink to={path}>{props.name}</NavLink>
+            <div >
+                <NavLink className={Data => Data.isActive ? s.active : s.DialogsItem} to={path}>{props.name}</NavLink>
             </div>
 
 
