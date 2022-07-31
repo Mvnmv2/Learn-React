@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import store from "./redax/state";
+import store from "./redax/Redax-store";
 import App from './App';
 
 
@@ -24,7 +24,10 @@ let rerenderEntireTree = (state) => {
 }
 rerenderEntireTree(store.getState());
 
-store.subscribe(rerenderEntireTree);
+store.subscribe (() => {
+    let state = store.getState();
+    rerenderEntireTree(state);
+});
 
 
 

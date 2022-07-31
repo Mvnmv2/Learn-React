@@ -4,15 +4,11 @@
 
     padding: 10px;
     line-height: 1.8;
-
-
 }
 
 .item a {
     color: #1c7364;
     text-decoration: none;
-
-
 }
 
 .item a.activeLink {
