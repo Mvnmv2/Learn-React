@@ -13,6 +13,7 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {faTwitter, faFontAwesome} from '@fortawesome/free-brands-svg-icons'
 import {addDialog} from "./redax/store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 library.add(fas, faTwitter, faFontAwesome)
 
@@ -27,12 +28,11 @@ const App = (props) => {
 
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/profile/*' element={<Profile profilePage={props.state.profilePage}
-                                                                   dispatch={props.dispatch}
+                        <Route path='/profile/*' element={ <Profile store={props.store} /> }/>
 
-                        />}/>
+
                         <Route path='/dialogs/*'
-                               element={<Dialogs store={props.store}
+                               element={<DialogsContainer store={props.store}
                                />}/>
 
                         <Route path='/News' element={<News/>}/>

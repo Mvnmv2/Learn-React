@@ -6,7 +6,7 @@ import {sendMessageCreator, updateNewMessageBodyCreator,} from "../../redax/Dial
 
 const Dialogs = (props) => {
 
-    let state = props.store.getState().dialogsPage;
+    let state = props.dialogsPage;
 
     let DialogElements = state.dialogsData.map(d => <DialogItem name={d.name} id={d.id}/>);
     let messagesElements = state.messagesData.map(m => <Message massage={m.message}/>)
@@ -15,21 +15,22 @@ const Dialogs = (props) => {
     //let newDialog = React.createRef();
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator());
+        props.SendMessage();
     }
 
     let onNewMessageChange = (e) => {
         let body = e.target.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body));
+        props.updateNewMessageBody(body);
     }
+
     return (
         <div className={s.Dialogs}>
             <div className={s.DialogsItems}>
                 {DialogElements}
                 <textarea className={s.textareaItem} onChange={onNewMessageChange}
-                          //ref={newDialog}
+                    //ref={newDialog}
                           placeholder='Enter your message!'
-                          value={newMessageBody} />
+                          value={newMessageBody}/>
                 <div>
                     <button onClick={onSendMessageClick}>Send</button>
                 </div>
