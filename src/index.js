@@ -4,7 +4,8 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import store from "./redax/Redax-store";
 import App from './App';
-import storeContext, {Provider} from "./StoreContext";
+import {Provider} from "react-redux";
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -20,8 +21,6 @@ let rerenderEntireTree = (state) => {
         </React.StrictMode>
 
     );
-
-
 }
 rerenderEntireTree(store.getState());
 
