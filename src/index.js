@@ -4,7 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import store from "./redax/Redax-store";
 import App from './App';
-
+import storeContext from "./StoreContext";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,23 +12,23 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 let rerenderEntireTree = (state) => {
 
     root.render(
+
         <React.StrictMode>
-            <App state={state}
-                 dispatch={store.dispatch.bind(store)}
-                 store={store}
-            />
+            <storeContext.Provider  value={store}>
+                <App />
+            </storeContext.Provider>
         </React.StrictMode>
+
     );
 
 
 }
 rerenderEntireTree(store.getState());
 
-store.subscribe (() => {
+store.subscribe(() => {
     let state = store.getState();
     rerenderEntireTree(state);
 });
-
 
 
 // If you want to start measuring performance in your app, pass a function
