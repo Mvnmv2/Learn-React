@@ -12,6 +12,7 @@ import {fas} from '@fortawesome/free-solid-svg-icons'
 import {faTwitter, faFontAwesome} from '@fortawesome/free-brands-svg-icons'
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 library.add(fas, faTwitter, faFontAwesome)
 
@@ -30,6 +31,9 @@ const App = (props) => {
                         <Route path='/dialogs/*' element={<DialogsContainer/>}/>
                         <Route path='/News' element={<News/>}/>
                         <Route path='/Music' element={<Music/>}/>
+
+                        <Route path='/users' element={<UsersContainer />}/>
+
                         <Route path='/Settings' element={<Settings/>}/>
                     </Routes>
                 </div>
