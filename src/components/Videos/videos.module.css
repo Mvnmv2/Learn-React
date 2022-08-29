@@ -1,0 +1,19 @@
+
+.container {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.photo {
+    width: 200px;
+    border-radius: 15px;
+}
+
+.views {
+    padding:0 5px;
+}
+
+.views, .whenAdded {
+    font-size: 14px;
+    font-style: italic;
+}

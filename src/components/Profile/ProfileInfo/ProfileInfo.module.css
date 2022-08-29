@@ -2,6 +2,8 @@
   .img {
     width: 100%;
     height: 150px;
+    object-fit: cover;
+    object-position: 50% 50%;
   }
   .item {
     padding-left: 10px;
@@ -9,6 +11,10 @@
     text-transform: uppercase;
     font-family: "Comic Sans MS";
     color: #333333;
+  }
+
+  .photos {
+
   }
 
   
