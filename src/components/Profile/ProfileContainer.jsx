@@ -1,13 +1,10 @@
 import React from "react";
-import classes from "./Profile.module.css";
-import MyPosts from "./MyPosts/MyPosts";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import Profile from "./Profile";
 import * as axios from "axios";
 import {connect} from "react-redux";
 import {setUserProfile} from "../../redax/Profile-reducer";
 import { useLocation, useNavigate, useParams, } from "react-router-dom";
+import {profileAPI} from "../../api/api";
 
 function withRouter(Component) {
     function ComponentWithRouterProp(props) {
@@ -33,9 +30,9 @@ class ProfileContainer extends React.Component {
         if(!userID) {
             userID = 2;
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userID)
-            .then(response => {
-                this.props.setUserProfile(response.data);
+        profileAPI.getUsers(userID)
+            .then(data => {
+                this.props.setUserProfile(data);
             });
 
     }
