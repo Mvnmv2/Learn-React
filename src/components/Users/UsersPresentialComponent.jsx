@@ -3,6 +3,7 @@ import styles from "./users.module.css";
 import userPhoto from "../../assets/images/userPhoto.png";
 import {NavLink} from "react-router-dom";
 import {usersAPI} from "../../api/api";
+import {toggleFollowingInProgress} from "../../redax/users-reducer";
 
 let Users = (props) => {
 
@@ -37,20 +38,26 @@ let Users = (props) => {
                         </div>
                         <div>
                             {u.followed
-                                ? <button onClick={() => {
+                                ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                    props.toggleFollowingInProgress(true, u.id);
+
                                     usersAPI.unFollow(u.id)
                                         .then(data => {
+
                                             if (data.resultCode == 0) {
                                                 props.unFollow(u.id);
                                             }
+                                            props.toggleFollowingInProgress(false, u.id);
                                         })
                                 }}>Unfollow</button>
-                                : <button onClick={() => {
+                                : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                    props.toggleFollowingInProgress(true, u.id);
                                     usersAPI.follow(u.id)
                                         .then(data => {
                                             if (data.resultCode == 0) {
                                                 props.follow(u.id);
                                             }
+                                            props.toggleFollowingInProgress(false, u.id);
                                         })
 
                                 }}>Follow</button>}
