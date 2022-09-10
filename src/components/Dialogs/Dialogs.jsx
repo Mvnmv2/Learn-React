@@ -13,8 +13,6 @@ const Dialogs = (props) => {
     let messagesElements = state.messagesData.map(m => <Message massage={m.message}/>)
     let newMessageBody = state.newMessageBody;
 
-    //let newDialog = React.createRef();
-
     let onSendMessageClick = () => {
         props.SendMessage();
     }
@@ -24,7 +22,7 @@ const Dialogs = (props) => {
         props.updateNewMessageBody(body);
     }
 
-    if(!props.isAuth) return <Navigate to={'/Login'}/>;
+    /*if(!props.isAuth) return <Navigate to={'/Login'}/>;*/
 
     return (
         <div className={s.Dialogs}>
