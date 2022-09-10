@@ -14,6 +14,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import VideosContainer from "./components/Videos/VideosContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import LoginPage from "./components/Login/Login";
 
 library.add(fas, faTwitter, faFontAwesome)
 
@@ -38,11 +39,14 @@ const App = (props) => {
                         <Route path='/Videos/*' element={<VideosContainer/>}/>
 
                         <Route path='/News' element={<News/>}/>
+
                         <Route path='/Music' element={<Music/>}/>
 
-                        <Route path='/users' element={<UsersContainer />}/>
+                        <Route path='/Users/*' element={<UsersContainer />}/>
 
                         <Route path='/Settings' element={<Settings/>}/>
+
+                        <Route path='/Login' element={<LoginPage/>}/>
                     </Routes>
                 </div>
             </div>

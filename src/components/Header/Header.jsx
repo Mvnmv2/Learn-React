@@ -4,8 +4,8 @@ import logo from './../logo.png'
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
-    return (<header className={s.header}>
 
+    return (<header className={s.header}>
             <div className={s.header__logo}>
                 <img src={logo} alt="logo"/>
                 <div className={s.loginBlock}>

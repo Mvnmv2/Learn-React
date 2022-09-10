@@ -25,7 +25,6 @@ let Users = (props) => {
                 })}
             </div>
 
-            {/*<button onClick={this.getUsers}>Get Users</button>*/}
 
             {
                 props.users.map(u => <div key={u.id}>
@@ -39,11 +38,15 @@ let Users = (props) => {
                         <div>
                             {u.followed
                                 ? <button disabled={props.followingInProgress.some(id => id === u.id)}
-                                          onClick={() => {props.unFollow(u.id)}}>
-                                          Unfollow</button>
+                                          onClick={() => {
+                                              props.unFollow(u.id)
+                                          }}>
+                                    Unfollow</button>
                                 : <button disabled={props.followingInProgress.some(id => id === u.id)}
-                                          onClick={() => {props.follow(u.id)}}>
-                                          Follow</button>}
+                                          onClick={() => {
+                                              props.follow(u.id)
+                                          }}>
+                                    Follow</button>}
 
                         </div>
                     </span>
