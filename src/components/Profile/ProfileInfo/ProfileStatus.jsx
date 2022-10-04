@@ -4,6 +4,7 @@ import classes from "./ProfileInfo.module.css";
 
 class ProfileStatus extends React.Component {
     statusInputRef = React.createRef()
+
     state = {
         editMode: false,
         status: this.props.status
@@ -25,6 +26,12 @@ class ProfileStatus extends React.Component {
         this.setState({
             status: e.currentTarget.value
         })
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.status !== this.props.status){
+              this.setState({status: this.props.status})
+        }
     }
 
     render() {
