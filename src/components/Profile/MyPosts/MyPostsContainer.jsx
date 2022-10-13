@@ -41,13 +41,14 @@ const mapToStateProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addPost: () => {
-            dispatch(addPostActionCreator());
-        },
-        updateNewPostText: (text) => {
-            let action = updateNewPostTextActionCreator(text);
-            dispatch(action);
+        addPost: (MessageBody) => {
+            dispatch(addPostActionCreator(MessageBody));
         }
+        // Не используем updateNewPostText т.к. в 76 уроке перешли на Redux-form
+        // updateNewPostText: (text) => {
+        //     let action = updateNewPostTextActionCreator(text);
+        //     dispatch(action);
+        // }
     }
 }
 

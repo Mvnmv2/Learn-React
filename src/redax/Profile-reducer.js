@@ -1,7 +1,8 @@
 import {profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+// Не используем UPDATE_NEW_POST_TEXT т.к. в 76 уроке перешли на Redux-form
+//const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
@@ -14,7 +15,7 @@ let initialState = {
         {post: 'blblblblba', id: 3, likeCounts: 5},
         {post: 'da da da ', id: 4, likeCounts: 5},
     ],
-    newPostText: '',
+    //newPostText: '',
     profile: null,
     status: ''
 };
@@ -25,22 +26,23 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
-                post: state.newPostText,
+                post: action.MessageBody,
                 id: 5,
                 likeCounts: 0
             };
             return {
                 ...state,
                 postsData: [...state.postsData, newPost],
-                newPostText: '',
+                //newPostText: '',
             };
         }
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                newPostText: action.newText,
-            };
-        }
+        // Не используем case UPDATE_NEW_POST_TEXT т.к. в 76 уроке перешли на Redux-form
+        // case UPDATE_NEW_POST_TEXT: {
+        //     return {
+        //         ...state,
+        //         newPostText: action.newText,
+        //     };
+        // }
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
@@ -54,17 +56,19 @@ const profileReducer = (state = initialState, action) => {
 
 /*Это ActionCreators*/
 
-export const addPostActionCreator = () => {
+export const addPostActionCreator = (MessageBody) => {
     return {
         type: ADD_POST,
+        MessageBody: MessageBody
     }
 }
-export const updateNewPostTextActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text,
-    }
-}
+// Не используем updateNewPostTextActionCreator т.к. в 76 уроке перешли на Redux-form
+// export const updateNewPostTextActionCreator = (text) => {
+//     return {
+//         type: UPDATE_NEW_POST_TEXT,
+//         newText: text,
+//     }
+// }
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 

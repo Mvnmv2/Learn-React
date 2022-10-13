@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redax/Profile-reducer";
+import PostForm from "./Post/AddPostForm";
 
 const MyPosts = (props) => {
 
@@ -9,14 +10,20 @@ const MyPosts = (props) => {
 
     let newPostElement = React.createRef();
 
-    let onAddPost = () => {
-        props.addPost();
+    // Не используем onAddPost т.к. в 76 уроке перешли на Redux-form
+    // let onAddPost = () => {
+    //     props.addPost();
+    // }
+
+    let addNewPost = (values) => {
+        props.addPost(values.MessageBody);
     }
 
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text);
-    }
+    // Не используем onPostChange т.к. в 76 уроке перешли на Redux-form
+    // let onPostChange = () => {
+    //     let text = newPostElement.current.value;
+    //     props.updateNewPostText(text);
+    // }
 
     return (
 
@@ -24,14 +31,15 @@ const MyPosts = (props) => {
             <div className={classes.logo}>
                 <h3><b>My posts</b></h3>
             </div>
+            <PostForm onSubmit={addNewPost}/>
 
-            <div>
+            {/*<div>
                 <textarea onChange={onPostChange} ref={newPostElement} name="#" id="" cols="30" rows="3"
                           value={props.newPostText}/>
             </div>
             <div>
                 <button onClick={onAddPost}>Add post</button>
-            </div>
+            </div>*/}
 
             <div className={classes.item}>
                 {postElement}

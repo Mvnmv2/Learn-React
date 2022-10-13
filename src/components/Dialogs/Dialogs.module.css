@@ -1,6 +1,6 @@
 .Dialogs {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     line-height: 2.8;
 
 }
@@ -10,11 +10,18 @@
 }
 
 .textareaItem {
+    padding-left: 15px;
     margin-top: 15px;
+    line-height: 1.8;
+}
+
+.btn {
+    margin-bottom: 20px;
+
 }
 
 .DialogsItem {
-    color: 	#333;
+    color: #333;
     margin-bottom: 20px;
     text-decoration: none;
 }
@@ -22,24 +29,20 @@
 .active {
     color: indianred;
     text-decoration: none;
-
 }
 
 .Dialog {
     display: flex;
-
 }
 
 .Message {
-
-    color: 	#333;
+    color: #333;
     font-style: italic;
 
 }
 
 .Icon {
     padding-right: 10px;
-    color: 	#FFEFD5;
+    color: #FFEFD5;
     font-size: 40px;
-
 }
