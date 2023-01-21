@@ -1,21 +1,42 @@
-
-  .img {
+  .container {
     width: 100%;
+  }
+  .img {
+    width: 98%;
     height: 150px;
     object-fit: cover;
-    object-position: 50% 50%;
-    border-radius: 10px;
+    border-radius: 30px;
+    margin: 1%;
   }
   .item {
-    padding-left: 10px;
-    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    border: 2px solid #cdcdcd;
+    padding: 15px;
     text-transform: uppercase;
+    border-radius: 20px;
     font-family: "Comic Sans MS";
     color: #333333;
+    margin: 1%;
+  }
+  strong {
+    display: inline-block;
+    text-transform:lowercase;
+  }
+  .userName {
+    text-transform:capitalize;
+  }
+  strong::first-letter {
+    text-transform:uppercase;
   }
 
-  .photos {
 
+  .photos {
+    width: 130px;
+    border-radius: 50%;
+    padding: 5px;
   }
 
   

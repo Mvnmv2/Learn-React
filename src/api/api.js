@@ -48,5 +48,12 @@ export const profileAPI = {
 export const headerAPI = {
     getLogin() {
         return instance.get(`auth/me`)
+    },
+    //Для логинизации
+    login(email, password, rememberMe = false) {
+        return instance.post(`auth/login`, {email, password, rememberMe})
+    },
+    logOut() {
+        return instance.delete(`auth/login`)
     }
 }
