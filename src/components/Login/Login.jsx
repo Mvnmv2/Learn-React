@@ -1,10 +1,10 @@
 import React from 'react';
 import {Field, reduxForm} from "redux-form";
+import style from '../common/FormsControls/FormsControls.module.css'
 import {Input} from "../common/FormsControls/FormsControls";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
 import {connect} from "react-redux";
 import {login} from "../../redax/auth-reducer";
-import {mapStateToPropsFactory} from "react-redux/es/connect/mapStateToProps";
 import {Navigate} from "react-router-dom";
 
 
@@ -19,9 +19,15 @@ const LoginForm = (props) => {
                 <Field placeholder={"Password"} name={"password"} component={Input} type={"password"}
                        validate={[required]}/>
             </div>
-            <div>
-                <Field type={"checkbox"} name={"rememberMe"} component={Input}/>remember me
+            <div className={style.rememberMe}>
+                <Field type={"checkbox"} name={"rememberMe"} component={Input}/><span>remember me</span>
             </div>
+            {props.error &&
+                <div className={style.formSummaryError}>
+                    {props.error}
+                </div>
+            }
+
             <div>
                 <button>Login</button>
             </div>
@@ -36,8 +42,8 @@ const Login = (props) => {
         props.login(formData.email, formData.password, formData.rememberMe)
     }
 
-    if(props.isAuth) {
-        return <Navigate to={"/profile"} />
+    if (props.isAuth) {
+        return <Navigate to={"/profile"}/>
     }
     return <div>
         <h1>LOGIN</h1>

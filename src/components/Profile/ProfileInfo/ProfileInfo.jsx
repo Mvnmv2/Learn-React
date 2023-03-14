@@ -12,7 +12,7 @@ const ProfileInfo = (props) => {
         <div className={classes.container}>
             <div>
                 <img className={classes.img}
-                     src="https://assets.truevirtualtours.com/img_cache/85/85067d65209a2f0f4ddbb4e58bf91a3e/1280x600/85067d65209a2f0f4ddbb4e58bf91a3e.jpg"/>
+                     src="https://i.pinimg.com/originals/89/0a/8e/890a8eba2a4737d83abe052ecf6c560c.jpg"/>
             </div>
             <div className={classes.item}>
                 <img className={classes.photos} src={props.profile.photos.large}/>

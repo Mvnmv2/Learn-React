@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -15,48 +15,64 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import VideosContainer from "./components/Videos/VideosContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
+import {connect} from "react-redux";
+import {initializeApp} from "./redax/app-reducer";
+import Preloader from "./components/common/preloader/Preloader";
 
 library.add(fas, faTwitter, faFontAwesome)
 
 
-const App = (props) => {
+class App extends Component {
 
-    return (
-        <BrowserRouter>
-            <div className='app-wrapper'>
-                <HeaderContainer/>
-                <NavbarContainer/>
+    componentDidMount() {
+        this.props.initializeApp();
 
-                <div className='app-wrapper-content'>
-                    <Routes>
+    }
 
-                        <Route path='/profile/*' element={<ProfileContainer />} />
+    render() {
+        if(!this.props.initialized) {
+            return <Preloader/>
+        }
+        return (
+            <BrowserRouter>
+                <div className='app-wrapper'>
+                    <HeaderContainer/>
+                    <NavbarContainer/>
 
-                        <Route path='/profile/:userID' element={<ProfileContainer/>}/>
+                    <div className='app-wrapper-content'>
+                        <Routes>
 
-                        <Route path='/dialogs/*' element={<DialogsContainer/>}/>
+                            <Route path='/profile/*' element={<ProfileContainer/>}/>
 
-                        <Route path='/Videos/*' element={<VideosContainer/>}/>
+                            <Route path='/profile/:userID' element={<ProfileContainer/>}/>
 
-                        <Route path='/News' element={<News/>}/>
+                            <Route path='/dialogs/*' element={<DialogsContainer/>}/>
 
-                        <Route path='/Music' element={<Music/>}/>
+                            <Route path='/Videos/*' element={<VideosContainer/>}/>
 
-                        <Route path='/Users/*' element={<UsersContainer />}/>
+                            <Route path='/News' element={<News/>}/>
 
-                        <Route path='/Settings' element={<Settings/>}/>
+                            <Route path='/Music' element={<Music/>}/>
 
-                        <Route path='/Login' element={<LoginPage/>}/>
-                    </Routes>
+                            <Route path='/Users/*' element={<UsersContainer/>}/>
+
+                            <Route path='/Settings' element={<Settings/>}/>
+
+                            <Route path='/Login' element={<LoginPage/>}/>
+                        </Routes>
+                    </div>
                 </div>
-            </div>
 
-        </BrowserRouter>
+            </BrowserRouter>
 
 
-    );
-
+        );
+    }
 }
 
+const mapStateToProps = (state) => ({
+    initialized: state.app.initialized
+})
 
-export default App;
+
+export default connect(mapStateToProps, {initializeApp})(App);
